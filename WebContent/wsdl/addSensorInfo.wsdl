@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://WebService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://WebService" xmlns:intf="http://WebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://WebService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="createSensorInfo">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="dio" type="xsd:string"/>
+      <element name="temperature" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createSensorInfoResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createSensorInfoRequest">
+
+      <wsdl:part element="impl:createSensorInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createSensorInfoResponse">
+
+      <wsdl:part element="impl:createSensorInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="addSensorInfo">
+
+      <wsdl:operation name="createSensorInfo">
+
+         <wsdl:input message="impl:createSensorInfoRequest" name="createSensorInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createSensorInfoResponse" name="createSensorInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="addSensorInfoSoapBinding" type="impl:addSensorInfo">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createSensorInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createSensorInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createSensorInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="addSensorInfoService">
+
+      <wsdl:port binding="impl:addSensorInfoSoapBinding" name="addSensorInfo">
+
+         <wsdlsoap:address location="http://localhost:8081/SmartBusTerminal/services/addSensorInfo"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

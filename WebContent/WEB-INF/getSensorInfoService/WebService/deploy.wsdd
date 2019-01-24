@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from getSensorInfoService WSDL service -->
+
+  <service name="getSensorInfo" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://WebService"/>
+      <parameter name="wsdlServiceElement" value="getSensorInfoService"/>
+      <parameter name="schemaQualified" value="http://model,http://WebService"/>
+      <parameter name="wsdlServicePort" value="getSensorInfo"/>
+      <parameter name="className" value="WebService.getSensorInfo"/>
+      <parameter name="wsdlPortType" value="getSensorInfo"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://WebService" name="inputSensorValues" qname="operNS:inputSensorValues" soapAction="">
+        <parameter xmlns:pns="http://WebService" xmlns:tns="http://model" qname="pns:SenzoriTemperatura" type="tns:sensorInfo"/>
+      </operation>
+      <parameter name="allowedMethods" value="inputSensorValues"/>
+
+      <typeMapping xmlns:ns="http://model" qname="ns:sensorInfo" type="java:model.SensorInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

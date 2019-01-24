@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://WebService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://WebService" xmlns:intf="http://WebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://WebService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="createVoznja">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="polaziste" type="xsd:string"/>
+      <element name="odrediste" type="xsd:string"/>
+      <element name="trajanjePutovanja" type="xsd:int"/>
+      <element name="prevoznik" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createVoznjaResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createVoznjaRequest">
+
+      <wsdl:part element="impl:createVoznja" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createVoznjaResponse">
+
+      <wsdl:part element="impl:createVoznjaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="addVoznja">
+
+      <wsdl:operation name="createVoznja">
+
+         <wsdl:input message="impl:createVoznjaRequest" name="createVoznjaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createVoznjaResponse" name="createVoznjaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="addVoznjaSoapBinding" type="impl:addVoznja">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createVoznja">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createVoznjaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createVoznjaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="addVoznjaService">
+
+      <wsdl:port binding="impl:addVoznjaSoapBinding" name="addVoznja">
+
+         <wsdlsoap:address location="http://localhost:8081/SmartBusTerminal/services/addVoznja"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
